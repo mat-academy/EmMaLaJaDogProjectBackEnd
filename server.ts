@@ -35,10 +35,9 @@ app.get("/votes", async (req, res) => {
   }
 });
 
-let insertVote = 'INSERT INTO votes (breed_name, user_name) VALUES ($1, $2) returning *'
-
 app.post("/", async (req, res) => {
   try {
+    const insertVote = 'INSERT INTO votes (breed_name, user_name) VALUES ($1, $2) returning *'
     const {breed_name, user_name} = req.body
     console.log('req.body', req.body);
     console.log('breed/sub-breed', breed_name);
