@@ -31,6 +31,24 @@ app.get("/", async (req, res) => {
   res.json(dbres.rows);
 });
 
+let insertVote = 'INSERT INTO votes (breed_name, user_name) VALUES ($1, $2)'
+
+app.post("/", async (req, res) => {
+  try {
+    const {breed_name, user_name} = req.body
+    console.log('req.body', req.body);
+    console.log('breed/sub-breed', breed_name);
+    console.log('user', user_name);
+    const addNewVote = await client.query(
+      insertVote, [breed_name, user_name]
+    );
+    res.json(addNewVote.rows)
+  } catch (error) {
+    console.error();
+    res.sendStatus(500);
+  }
+});
+
 
 //Start the server on the given port
 const port = process.env.PORT;
