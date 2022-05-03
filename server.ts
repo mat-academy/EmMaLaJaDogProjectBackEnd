@@ -35,7 +35,7 @@ app.get("/votes", async (req, res) => {
   }
 });
 
-let insertVote = 'INSERT INTO votes (breed_name, user_name) VALUES ($1, $2)'
+let insertVote = 'INSERT INTO votes (breed_name, user_name) VALUES ($1, $2) returning *'
 
 app.post("/", async (req, res) => {
   try {
