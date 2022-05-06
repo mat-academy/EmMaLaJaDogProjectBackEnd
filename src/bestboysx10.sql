@@ -10,4 +10,4 @@ order by
 limit 10
 
 
-/* Select query to return the top10 most counted breeds in reverse order*/
+/* Select query to return the top10 most counted breeds in reverse order.*/

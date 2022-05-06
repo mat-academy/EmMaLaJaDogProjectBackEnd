@@ -27,7 +27,7 @@ const client = new Client(dbConfig);
 client.connect();
 
 
-// To get top10 most voted dogs and send them back in order from largest to smallest
+// To get top10 most voted dogs and send them back in order from largest to smallest.
 app.get("/votes", async (req, res) => {
   try {
     const topTen = await client.query('select breed_name, count(breed_name) from votes group by breed_name order by count(breed_name) desc limit 10');
