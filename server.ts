@@ -26,6 +26,8 @@ app.use(cors()) //add CORS support to each following route handler
 const client = new Client(dbConfig);
 client.connect();
 
+
+// To get top10 most voted dogs and send them back in order from largest to smallest
 app.get("/votes", async (req, res) => {
   try {
     const topTen = await client.query('select breed_name, count(breed_name) from votes group by breed_name order by count(breed_name) desc limit 10');
@@ -35,6 +37,7 @@ app.get("/votes", async (req, res) => {
   }
 });
 
+// Inserting new values into column breed_name and user_name(if presented with one), with a value of 1(vote)
 app.post("/", async (req, res) => {
   try {
     const insertVote = 'INSERT INTO votes (breed_name, user_name) VALUES ($1, $2) returning *'
