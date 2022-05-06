@@ -6,3 +6,4 @@ CREATE TABLE votes (
 );
 
 
+/* SQL query used to initialsie the vote table within the database. */
